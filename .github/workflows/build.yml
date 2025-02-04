@@ -1,12 +1,13 @@
 name: Build
 
 on:
+  workflow_dispatch:
   release:
     types: [created]
 
 jobs:
-  generate:
-    name: Create release-artifacts
+  build:
+    name: Build
     runs-on: ubuntu-24.04
 
     steps:
@@ -15,8 +16,6 @@ jobs:
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: x86_64-pc-windows-gnu
 
       - name: Build first artifact
         run: cargo build --release
