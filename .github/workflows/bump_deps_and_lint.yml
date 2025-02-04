@@ -29,7 +29,7 @@ jobs:
 
       - name: Lint and format
         run: |
-          find . -name "*.rs" -exec cargo fmt --all -- --check {} \; || cargo fmt --all
+          find . -name "*.rs" -exec cargo fmt --all -- {} \;
 
       - name: Push changes
         run: |
