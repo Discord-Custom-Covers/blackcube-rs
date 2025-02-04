@@ -29,6 +29,7 @@ jobs:
 
       - name: Lint and format
         run: |
+          cd src
           find . -name "*.rs" -exec cargo fmt --all -- {} \;
 
       - name: Push changes
