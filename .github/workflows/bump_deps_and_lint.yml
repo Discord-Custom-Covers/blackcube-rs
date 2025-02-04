@@ -21,18 +21,15 @@ jobs:
 
       - name: Bump dependencies
         run: |
-          cd src
           cargo update --verbose
 
       - name: Apply fixes
         run: |
-          cd src
           cargo fix --allow-dirty --verbose
 
       - name: Lint and format
         run: |
-          cd src
-          cargo fmt --all -- --check || cargo fmt --all
+          find . -name "*.rs" -exec cargo fmt --all -- --check {} \; || cargo fmt --all
 
       - name: Push changes
         run: |
