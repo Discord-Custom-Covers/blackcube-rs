@@ -17,24 +17,12 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Setup cross
-        run: cargo install cross
-
-      - name: Cache Rust dependencies
-        uses: Swatinem/rust-cache@v2
-
       - name: Build first artifact
         run: cargo build --release
-
-      - name: Build second artifact
-        run: cross run --release --target x86_64-pc-windows-gnu
-
-      - run: ls -R
 
       - name: Upload the artifacts
         uses: actions/upload-artifact@v4
         with:
           name: BlackCube-rs Artifact
           path: |
-            "./target/release/blackcube-rs" 
-            "./target/x86_64-pc-windows-gnu/release/blackcube-rs.exe"
+            "./target/release/blackcube-rs*"
