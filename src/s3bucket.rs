@@ -30,7 +30,7 @@ pub async fn connect_bucket(config: &Config) -> Result<Bucket, anyhow::Error> {
     )?
     .with_path_style();
 
-    Ok(bucket)
+    Ok(Bucket)
 }
 
 pub async fn upload(data: &Data, image_url: String, uid: String) -> Result<String, anyhow::Error> {
