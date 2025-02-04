@@ -21,17 +21,17 @@ jobs:
 
       - name: Bump dependencies
         run: |
-          cd server
+          cd src
           cargo update --verbose
 
       - name: Apply fixes
         run: |
-          cd server
+          cd src
           cargo fix --allow-dirty --verbose
 
       - name: Lint and format
         run: |
-          cd server
+          cd src
           cargo fmt --all -- --check || cargo fmt --all
 
       - name: Push changes
