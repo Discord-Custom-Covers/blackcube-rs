@@ -1,3 +1,3 @@
 # USRBG Handler Bot (BlackCube-rs)
 
-Documentation coming soon...
+A Discord bot for handling USRBG banner requests.
