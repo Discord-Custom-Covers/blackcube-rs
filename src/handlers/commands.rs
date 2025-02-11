@@ -86,7 +86,7 @@ pub async fn rm(
             delete(ctx.data(), ctx.author().id.to_string()).await?;
             ctx.send(
                 poise::CreateReply::default()
-                    .content("Removed Your Banner")
+                    .content("Removed your banner")
                     .ephemeral(true),
             )
             .await?;
