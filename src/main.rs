@@ -168,9 +168,7 @@ async fn event_handler(
             _ => {}
         },
         serenity::FullEvent::Message { new_message } => {
-            if new_message.channel_id == data.config.server.request_channel_id
-                && !new_message.author.has_auth(ctx, data).await?
-            {
+            if new_message.channel_id == data.config.server.request_channel_id && !new_message.author.has_auth(ctx, data).await? {
                 new_message.delete(ctx.http()).await?;
             }
         }
