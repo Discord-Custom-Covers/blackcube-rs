@@ -80,7 +80,7 @@ pub async fn handle_component_interaction(
                     false,
                 )
                 .await
-                .context("could not edit request message")?;
+                .context("Could not edit request message")?;
             } else {
                 send_ephemeral_interaction_reply(
                     ctx,
@@ -101,7 +101,7 @@ pub async fn handle_component_interaction(
                 edit_request(
                     ctx,
                     &mut component_interaction.message,
-                    "Request Denied",
+                    "Request denied",
                     None,
                     false,
                 )
