@@ -26,7 +26,7 @@ async fn main() {
             config_file_location = "/etc/blackcube-rs/blackcube-rs.toml";
         }
         "windows" => {
-            config_file_location = "C:\\ProgramData\\blackcube-rs\\blackcube-rs.toml";
+            config_file_location = "%SystemDrive%\\ProgramData\\blackcube-rs\\blackcube-rs.toml";
         }
         _ => {
             unreachable!();
@@ -35,7 +35,7 @@ async fn main() {
 
     let config: Config = toml::from_str(
         &fs::read_to_string(config_file_location)
-            .expect("Could not read configuration file, make sure the config is located at /etc/blackcube-rs/blackcube-rs.toml or C:\\ProgramData\\blackcube-rs\\blackcube-rs.toml")
+            .expect("Could not read configuration file, make sure the config is located at /etc/blackcube-rs/blackcube-rs.toml or %SystemDrive%\\ProgramData\\blackcube-rs\\blackcube-rs.toml")
     ).expect("could not read config");
 
     // Should I be doing all of this just to allow for changes to the valid image types from the config?? The jury is still out.
