@@ -76,7 +76,7 @@ pub async fn send_ephemeral_interaction_reply(
             ),
         )
         .await
-        .context("could not create ephemeral response")?;
+        .context("Could not create ephemeral response")?;
     Ok(())
 }
 
@@ -93,7 +93,7 @@ pub async fn send_ephemeral_interaction_followup_reply(
                 .flags(MessageFlags::EPHEMERAL),
         )
         .await
-        .context("could not create ephemeral response")?;
+        .context("Could not create ephemeral response")?;
     Ok(())
 }
 
@@ -129,6 +129,6 @@ pub async fn create_request_log_message(
                 ),
         )
         .await
-        .context("could not create request log message")?;
+        .context("Could not create request log message")?;
     Ok(created_message.link())
 }

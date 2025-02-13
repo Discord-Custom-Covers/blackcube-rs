@@ -4,7 +4,7 @@ use std::{
 };
 
 use anyhow::{bail, Context as AnyhowContext};
-use image::io::Reader;
+use image::ImageReader;
 use s3::{creds::Credentials, Bucket, Region};
 
 use crate::structs::{Config, Data};
@@ -30,7 +30,7 @@ pub async fn connect_bucket(config: &Config) -> Result<Bucket, anyhow::Error> {
     )?
     .with_path_style();
 
-    Ok(bucket)
+    Ok(*bucket)
 }
 
 pub async fn upload(data: &Data, image_url: String, uid: String) -> Result<String, anyhow::Error> {
@@ -39,7 +39,7 @@ pub async fn upload(data: &Data, image_url: String, uid: String) -> Result<Strin
     let response = http_client.get(image_url.clone()).send().await?;
     let image_bytes = response.bytes().await?;
 
-    let content_type = Reader::new(Cursor::new(&image_bytes))
+    let content_type = ImageReader::new(Cursor::new(&image_bytes))
         .with_guessed_format()?
         .format()
         .context("Could not parse image format")?
